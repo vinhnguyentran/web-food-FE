@@ -19,8 +19,8 @@ const StoreConTextProvider = (props) => {
         country: '',
         phone: ''
       })
-    // const url = 'http://localhost:4000' // local api
-    const url = 'https://7c78-27-75-104-167.ngrok-free.app/' //ngrok api
+    const url = 'http://localhost:4000' // local api
+    // const url = 'https://7c78-27-75-104-167.ngrok-free.app/' //ngrok api
     const addToCart = async (itemId) => {
        
         if(!cartItem[itemId]){
