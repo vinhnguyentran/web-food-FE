@@ -1,5 +1,5 @@
 {
-  "homepage": "https://github.com/vinhnguyentran/react-food-web/tree/main/front-end",
+  "homepage": "https://github.com/vinhnguyentran/web-food-FE.git",
   "name": "front-end",
   "private": true,
   "version": "0.0.0",
@@ -8,7 +8,7 @@
     "dev": "vite",
     "build": "vite build",
     "predeploy": "npm run build",
-    "deploy": "gh-pages -d build",
+    "deploy": "gh-pages -d dist",
     "lint": "eslint .",
     "preview": "vite preview"
   },
