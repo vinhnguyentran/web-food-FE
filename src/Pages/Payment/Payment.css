@@ -1,0 +1,85 @@
+.payment{
+    width: 90%;
+    display: flex;
+    gap:16px;
+}
+.payment .order-col{
+    width: 40%;
+}
+.payment .payment-col{
+    width: 60%;
+}
+.payment-col .start-payment{
+    width: 100%;
+    padding-left: 24px;
+}
+.form-pay-method{
+    margin-top: 80px;
+    width: 100%;
+}
+.form-pay-method select{
+    width: 256px;
+    height: 45px;
+    font-size: 16px;
+    margin: 22px 0px 12px 0px;
+}
+
+.icon-pay{
+    width: 50px;
+    height: 50px;
+}
+.cart-total{
+    padding-left: 24px;
+    max-height: 30%;
+}
+.cart-total-detail{
+    display: flex;
+    justify-content: space-between;
+    padding: 12px;
+}
+.cart-item-row{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-top: 1px solid gray;
+    padding: 15px;
+}
+.cart-item-row img{
+    width: 80px;
+    border-radius: 12px;
+}
+.cart-item-info{
+    max-height: 50px;
+}
+.btn-pay{
+    width: 120px;
+    height: 40px;
+    background-color: black;
+    border-radius: 6px;
+    color: white;
+    font-size: 16px;
+    font-weight: 500;
+    margin-top: 20px;
+    border: none;
+}
+.start-payment{
+    
+}
+@media (max-width: 750px) {
+    .payment{
+        width: 100%;
+        flex-direction: column;
+    }
+    .payment .order-col, .payment .payment-col{
+        width: 100%;
+    }
+    .cart-total{ 
+        padding-left: 0px;
+    }
+    .payment-col .start-payment{
+        padding-left: 0px;
+    }
+    .form-pay-method{
+        margin-top: 20px;
+    }
+}
