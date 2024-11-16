@@ -3,7 +3,7 @@ import './Cart.css';
 
 import { StoreContext } from './../../context/StoreContext';
 import { useNavigate } from 'react-router-dom';
-import { assets } from '../../assets/assets';
+import { assets } from '../../assets-local/assets';
 const Cart = () => {
   const {cartItem, food_list, removeCartItem, getTotalCartAmount,url,addToCart,deleteCartItem} = useContext(StoreContext)
   const navigate = useNavigate()

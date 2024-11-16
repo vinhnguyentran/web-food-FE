@@ -1,7 +1,7 @@
 import React, { useContext, useState } from 'react'
 import './Payment.css'
 import { StoreContext } from '../../context/StoreContext'
-import { assets } from '../../assets/assets'
+import { assets } from '../../assets-local/assets'
 import axios from 'axios'
 import { Link } from 'react-router-dom';
 
