@@ -11,7 +11,7 @@ const PlaceOrder = () => {
     setOrderData(data => ({...data, [name]: value}))
  }
   const submitOrder = () => {
-    navigate('/payment')
+    navigate('/web-food-FE/payment')
   }
   return (
     <form className='place-order' onSubmit={submitOrder}>
