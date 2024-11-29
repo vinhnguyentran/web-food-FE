@@ -5,10 +5,10 @@ const Header = () => {
     <div className='header'>
         <div className='header-content'>
             <h2>
-                Order your favourite food here
+                Bạn muốn ăn gì?
             </h2>
-            <p>Choose from a diverse menu</p>
-            <button>View Menu</button>
+            <p>Chọn món ăn bạn thích nào!</p>
+            <button>Xem menu</button>
         </div>
     </div>
   )

@@ -3,20 +3,20 @@ import './Cart.css';
 
 import { StoreContext } from './../../context/StoreContext';
 import { useNavigate } from 'react-router-dom';
-import { assets } from '../../assets-local/assets';
+import { assets } from '../../assets/assets';
 const Cart = () => {
-  const {cartItem, food_list, removeCartItem, getTotalCartAmount,url,addToCart,deleteCartItem} = useContext(StoreContext)
+  const {cartItem, food_list, removeCartItem, getTotalCartAmount,url,addToCart,deleteCartItem,vnd} = useContext(StoreContext)
   const navigate = useNavigate()
   return (
     <div className='cart' >
       <div className="cart-item">
         <div className="cart-item-title">
-          <p>Item</p>
-          <p>Title</p>
-          <p>Price</p>
-          <p>Quantity</p>
-          <p>Total</p>
-          <p>Remove</p>
+          <p>Hình Ảnh</p>
+          <p>Tên món</p>
+          <p>Giá</p>
+          <p>Số Lượng</p>
+          <p>Tổng</p>
+          <p>Thêm/bớt</p>
         </div>
         <hr/>
         <br/>
@@ -24,15 +24,16 @@ const Cart = () => {
           if(cartItem[item._id]>0){
             return(
               <div className='cart-item-title cart-items-item' key={index}>
-                <img src={url + '/images/' + item.image} alt=''/>
+                <img src={item.image} alt={item.name}/>
+                {/* <img src={url + '/images/' + item.image} alt=''/> */}
                 <p>{item.name}</p>
-                <p>${item.price}</p>
+                <p>{vnd.format(item.price)}</p>
                 <p>
                   <img className='quantity-icon' src={assets.add_icon_green} onClick={()=> addToCart(item._id)}/>
                   {cartItem[item._id]} 
                   <img  className='quantity-icon' src={assets.remove_icon_red} onClick={() => removeCartItem(item._id)}/></p>
-                <p>${item.price*cartItem[item._id]}</p>
-                <p onClick={() => deleteCartItem(item._id)} className='cross'><img className='quantity-icon' src={assets.delete_icon} alt='' /></p>
+                <p>{vnd.format(item.price*cartItem[item._id])}</p>
+                <p onClick={() => deleteCartItem(item._id)} className='cross'><img  src={assets.delete_icon} className='quantity-icon' alt='' /></p>
               </div>
             )
           }
@@ -40,31 +41,31 @@ const Cart = () => {
       </div>
       <div className="cart-bottom">
         <div className="cart-total">
-          <h2>Cart Total</h2>
+          
           <div>
             <div className="cart-total-detail">
-              <p>Subtotal</p>
-              <p>$ {getTotalCartAmount()}</p>
+              <p>Tổng</p>
+              <p> {vnd.format(getTotalCartAmount())}</p>
             </div>
             <hr/>
             <div className="cart-total-detail">
-              <p>Delivery Free</p>
-              <p>$ {getTotalCartAmount()===0?0:2}</p>
+              <p>Phí giao hàng</p>
+              <p> {vnd.format(getTotalCartAmount()===0?0:2000)}</p>
             </div>
             <hr/>
             <div className="cart-total-detail">
-              <p>Total</p>
-              <p>$ {getTotalCartAmount()===0?0:getTotalCartAmount()+2}</p>
+              <p>Tổng thanh toán</p>
+              <p> {vnd.format(getTotalCartAmount()===0?0:getTotalCartAmount()+ 2000)}</p>
             </div>
           </div>
-          <button onClick={() => navigate('/web-food-FE/place')}>PROCEED TO CHECKOUT</button>
+          <button onClick={() => getTotalCartAmount() > 0 ? navigate('/web-food-FE/place') : ''}>THANH TOÁN</button>
         </div>
         <div className="cart-promocode">
           <div>
-            <p>If you have a promo code, Enter it here</p>
+            <p>Nếu bạn có mã khuyến mại, hãy nhập vào đây</p>
             <div className="cart-promocode-input">
               <input type='text' placeholder='promo code'/>
-              <button>Submit</button>
+              <button>OK</button>
             </div>
           </div>
         </div>

@@ -1,10 +1,14 @@
 import React, { useContext, useState } from 'react'
 import './LoginPopup.css'
-import { assets } from '../../assets-local/assets'
+import { assets } from '../../assets/assets'
 import { StoreContext } from '../../context/StoreContext'
 import axios from 'axios';
 const LoginPopup = ({ setShowLogin }) => {
     const [currState, setCurrState] = useState('Login')
+    const userTest = {
+        email: 'test@gmail.com',
+        password: 'test1234'
+    }
     const {url,setToken} = useContext(StoreContext)
     const [data, setData] = useState({
         name: '',
@@ -18,19 +22,27 @@ const LoginPopup = ({ setShowLogin }) => {
     }
     const onLogin = async (e) => {
         e.preventDefault()
-        let newUrl = url;
-        if (currState === 'Login') {
-            newUrl += '/api/user/login'
-        }else{
-            newUrl += '/api/user/register'
-        }
-        const res = await axios.post(newUrl, data)
-        if(res.data.success){
-            setToken(res.data.token)
-            localStorage.setItem('token', res.data.token)
+        if(data.email === userTest.email && data.password === userTest.password){
+            const tokenFake = new Date() + '&user=test&email='+ data.email;
+            setToken(tokenFake)
+            localStorage.setItem('token', tokenFake)
             setShowLogin(false)
-        }else{
-            alert(res.data.message)
+        // let newUrl = url;
+        // if (currState === 'Login') {
+        //     newUrl += '/api/user/login'
+        // }else{
+        //     newUrl += '/api/user/register'
+        // }
+        // const res = await axios.post(newUrl, data)
+        // if(res.data.success){
+        //     setToken(res.data.token)
+        //     localStorage.setItem('token', res.data.token)
+        //     setShowLogin(false)
+        // }else{
+        //     alert(res.data.message)
+        }
+        else{
+            alert('Invalid email or password')
         }
     }
     return (
